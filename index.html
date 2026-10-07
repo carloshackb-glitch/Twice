@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ari</title>
     <style>
-        /* Configuración base y fondo corregido con imagen online */
+        /* Configuración base y fondo con ruta relativa para GitHub */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('https://githubusercontent.com');
+            /* IMPORTANTE: El nombre debe coincidir EXACTAMENTE con tu archivo en GitHub */
+            background-image: url('imagen_TzC0YH.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -36,7 +37,7 @@
             box-sizing: border-box;
         }
 
-        /* Sección del reproductor musical antiguo corregido */
+        /* Sección del reproductor musical antiguo con ruta relativa */
         .player-container {
             background: rgba(214, 51, 132, 0.1);
             padding: 15px;
@@ -108,10 +109,11 @@
 
     <div class="main-container">
         
-        <!-- Reproductor Antiguo enlazado a la música online de la canción -->
+        <!-- Reproductor Antiguo enlazado a tu archivo local en la misma carpeta -->
         <div class="player-container">
             <audio controls loop>
-                <source src="https://githubusercontent.com" type="audio/mpeg">
+                <!-- IMPORTANTE: El nombre debe coincidir EXACTAMENTE con tu archivo de música en GitHub -->
+                <source src="musica.mp3" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>

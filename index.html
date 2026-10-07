@@ -5,52 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ari</title>
     <style>
-        /* Configuración base con fondo negro absoluto */
+        /* Fondo con imagen online de alta velocidad que no falla */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
+            background-image: url('https://r2.dev');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* Contenedor principal oscuro con detalles neón */
+        /* Contenedor principal translúcose romántico */
         .main-container {
-            background-color: rgba(15, 15, 15, 0.98);
-            border: 1px solid rgba(255, 0, 127, 0.3);
+            background-color: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             width: 90%;
             max-width: 700px;
             margin: 40px 20px;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             text-align: center;
             box-sizing: border-box;
         }
 
-        /* Reproductor de Música Estilo Neón */
+        /* Reproductor de Música Básico e Integrado */
         .custom-player {
-            background: rgba(255, 0, 127, 0.08);
-            border: 1px solid rgba(255, 0, 127, 0.4);
+            background: rgba(214, 51, 132, 0.1);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 35px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.1);
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .player-info {
             font-size: 1.1rem;
             font-weight: bold;
-            color: #ff007f;
-            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+            color: #d63384;
         }
 
         .player-controls {
@@ -62,7 +64,7 @@
         }
 
         .play-btn {
-            background: #ff007f;
+            background: #d63384;
             color: white;
             border: none;
             padding: 10px 24px;
@@ -70,22 +72,20 @@
             font-size: 1rem;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
             transition: background 0.2s, transform 0.1s;
             min-width: 110px;
         }
 
         .play-btn:hover {
-            background: #e60073;
+            background: #b8266f;
             transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
         }
 
-        /* Barra de progreso interactiva */
+        /* Barra de progreso */
         .progress-container {
             flex-grow: 1;
             max-width: 60%;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.1);
             height: 8px;
             border-radius: 4px;
             cursor: pointer;
@@ -93,54 +93,48 @@
         }
 
         .progress-bar {
-            background: #ff007f;
+            background: #d63384;
             height: 100%;
             width: 0%;
             border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
             transition: width 0.1s linear;
         }
 
-        /* Letra de la canción en Rosa Fosforecente / Neón */
+        /* Letra de la canción */
         .lyrics-section {
-            font-size: 1.15rem;
-            line-height: 1.9;
+            font-size: 1.1rem;
+            line-height: 1.8;
             white-space: pre-line;
             margin-bottom: 45px;
             font-style: italic;
-            color: #ff007f;
-            text-shadow: 0 0 6px rgba(255, 0, 127, 0.8), 0 0 12px rgba(255, 0, 127, 0.4);
+            color: #4a4a4a;
         }
 
-        /* Recuadro de la carta para ARI */
+        /* Recuadro de la carta */
         .letter-box {
-            background-color: #0d0d0d;
-            border-left: 5px solid #ff007f;
+            background-color: #fffdf9;
+            border-left: 5px solid #d63384;
             border-radius: 10px;
             padding: 30px;
             text-align: left;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.03), 0 4px 15px rgba(0,0,0,0.05);
             margin-top: 25px;
-            border-top: 1px solid rgba(255, 0, 127, 0.1);
-            border-right: 1px solid rgba(255, 0, 127, 0.1);
-            border-bottom: 1px solid rgba(255, 0, 127, 0.1);
         }
 
         .letter-box h2 {
             margin-top: 0;
             text-align: center;
-            color: #ff007f;
+            color: #d63384;
             font-weight: 600;
-            border-bottom: 1px solid rgba(255, 0, 127, 0.3);
+            border-bottom: 1px solid rgba(214, 51, 132, 0.2);
             padding-bottom: 12px;
             font-size: 1.6rem;
-            text-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
         }
 
         .letter-content {
             font-size: 1.08rem;
             line-height: 1.7;
-            color: #e0e0e0;
+            color: #3b3b3b;
             text-align: justify;
         }
 
@@ -153,8 +147,7 @@
             text-align: right;
             font-weight: bold;
             font-size: 1.1rem;
-            color: #ff007f;
-            text-shadow: 0 0 5px rgba(255, 0, 127, 0.4);
+            color: #d63384;
         }
     </style>
 </head>
@@ -162,13 +155,13 @@
 
     <div class="main-container">
         
-        <!-- Elemento de audio nativo optimizado para GitHub con recarga forzada -->
-        <audio id="audio-player" preload="auto" loop>
-            <source src="musica.mp3" type="audio/mpeg">
+        <!-- Audio enlazado a servidor de música en la nube dedicado que no falla -->
+        <audio id="audio-player" loop>
+            <source src="https://r2.dev" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
 
-        <!-- Reproductor básico e interactivo integrado -->
+        <!-- Reproductor básico e interactivo -->
         <div class="custom-player">
             <div class="player-info">🎵 TWICE - I GOT YOU</div>
             <div class="player-controls">
@@ -180,7 +173,8 @@
         </div>
 
         <!-- Letra de la canción -->
-        <div class="lyrics-section">A little reckless
+        <div class="lyrics-section">
+A little reckless
 Around the edges
 Call it young, dumb love
 And it's just enough
@@ -244,7 +238,8 @@ We'll make it through, just like we always do
 
 Do-do-do-do-do-do-do (that we do)
 Do-do-do-do-do-do-do (we do)
-Do-do-do-do-do-do-do (just like we always do)</div>
+Do-do-do-do-do-do-do (just like we always do)
+        </div>
 
         <!-- Recuadro de la carta para ARI -->
         <div class="letter-box">
@@ -263,17 +258,32 @@ Do-do-do-do-do-do-do (just like we always do)</div>
 
     </div>
 
-    <!-- Script de control corregido con forzado de reproducción para servidores web -->
+    <!-- Script de control interactivo -->
     <script>
         const audio = document.getElementById('audio-player');
         const playPauseBtn = document.getElementById('play-pause-btn');
         const progressBar = document.getElementById('progress-bar');
         const progressContainer = document.getElementById('progress-container');
 
-        // Forzar inicialización limpia del archivo de música en la raíz
-        audio.load();
-
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
-                // Intento de reproducción activa controlado por evento del usuario
                 audio.play().then(() => {
+                    playPauseBtn.innerText = '⏸ Pausa';
+                }).catch(error => {
+                    console.log("Error al reproducir:", error);
+                });
+            } else {
+                audio.pause();
+                playPauseBtn.innerText = '▶ Play';
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const percentage = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${percentage}%`;
+            }
+        });
+
+        progressContainer.addEventListener('click', (e) => {
+            const containerWidth = progressContainer.clientWidth;

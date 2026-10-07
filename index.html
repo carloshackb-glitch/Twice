@@ -155,9 +155,10 @@
 
     <div class="main-container">
         
-        <!-- Elemento de audio nativo oculto enlazado a la música online -->
+        <!-- Elemento de audio nativo configurado para leer tu archivo local en la raíz -->
         <audio id="audio-player" loop>
-            <source src="https://r2.dev" type="audio/mpeg">
+            <!-- IMPORTANTE: El nombre debe coincidir EXACTAMENTE con tu archivo de música en GitHub -->
+            <source src="musica.mp3" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
 
@@ -281,4 +282,3 @@ Do-do-do-do-do-do-do (just like we always do)
         // Mover la barra de progreso a medida que avanza la canción
         audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
-                const percentage = (audio.currentTime / audio.duration) * 100;

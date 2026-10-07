@@ -5,54 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ari</title>
     <style>
-        /* Configuración base y fondo con imagen online */
+        /* Configuración base con fondo negro absoluto */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('https://r2.dev');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #333;
+            background-color: #000000;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* Contenedor principal translúcido para legibilidad */
+        /* Contenedor principal oscuro con detalles neón */
         .main-container {
-            background-color: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 15, 15, 0.98);
+            border: 1px solid rgba(255, 0, 127, 0.3);
             width: 90%;
             max-width: 700px;
             margin: 40px 20px;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.2);
             text-align: center;
             box-sizing: border-box;
         }
 
-        /* Nuevo Reproductor de Música Personalizado */
+        /* Reproductor de Música Estilo Neón */
         .custom-player {
-            background: rgba(214, 51, 132, 0.1);
+            background: rgba(255, 0, 127, 0.08);
+            border: 1px solid rgba(255, 0, 127, 0.4);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 35px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            gap: 15px;
+            box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.1);
         }
 
         .player-info {
             font-size: 1.1rem;
             font-weight: bold;
-            color: #d63384;
+            color: #ff007f;
+            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
         }
 
         .player-controls {
@@ -64,7 +62,7 @@
         }
 
         .play-btn {
-            background: #d63384;
+            background: #ff007f;
             color: white;
             border: none;
             padding: 10px 24px;
@@ -72,20 +70,22 @@
             font-size: 1rem;
             cursor: pointer;
             font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
             transition: background 0.2s, transform 0.1s;
             min-width: 110px;
         }
 
         .play-btn:hover {
-            background: #b8266f;
+            background: #e60073;
             transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
         }
 
-        /* Barra de progreso del reproductor */
+        /* Barra de progreso interactiva */
         .progress-container {
             flex-grow: 1;
             max-width: 60%;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             height: 8px;
             border-radius: 4px;
             cursor: pointer;
@@ -93,48 +93,54 @@
         }
 
         .progress-bar {
-            background: #d63384;
+            background: #ff007f;
             height: 100%;
             width: 0%;
             border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
             transition: width 0.1s linear;
         }
 
-        /* Sección de la letra de la canción */
+        /* Letra de la canción en Rosa Fosforecente / Neón */
         .lyrics-section {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 1.9;
             white-space: pre-line;
             margin-bottom: 45px;
             font-style: italic;
-            color: #4a4a4a;
+            color: #ff007f;
+            text-shadow: 0 0 6px rgba(255, 0, 127, 0.8), 0 0 12px rgba(255, 0, 127, 0.4);
         }
 
-        /* Recuadro de la carta */
+        /* Recuadro de la carta para ARI */
         .letter-box {
-            background-color: #fffdf9;
-            border-left: 5px solid #d63384;
+            background-color: #0d0d0d;
+            border-left: 5px solid #ff007f;
             border-radius: 10px;
             padding: 30px;
             text-align: left;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.03), 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 4px 15px rgba(0,0,0,0.5);
             margin-top: 25px;
+            border-top: 1px solid rgba(255, 0, 127, 0.1);
+            border-right: 1px solid rgba(255, 0, 127, 0.1);
+            border-bottom: 1px solid rgba(255, 0, 127, 0.1);
         }
 
         .letter-box h2 {
             margin-top: 0;
             text-align: center;
-            color: #d63384;
+            color: #ff007f;
             font-weight: 600;
-            border-bottom: 1px solid rgba(214, 51, 132, 0.2);
+            border-bottom: 1px solid rgba(255, 0, 127, 0.3);
             padding-bottom: 12px;
             font-size: 1.6rem;
+            text-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
         }
 
         .letter-content {
             font-size: 1.08rem;
             line-height: 1.7;
-            color: #3b3b3b;
+            color: #e0e0e0;
             text-align: justify;
         }
 
@@ -147,7 +153,8 @@
             text-align: right;
             font-weight: bold;
             font-size: 1.1rem;
-            color: #d63384;
+            color: #ff007f;
+            text-shadow: 0 0 5px rgba(255, 0, 127, 0.4);
         }
     </style>
 </head>
@@ -155,9 +162,8 @@
 
     <div class="main-container">
         
-        <!-- Elemento de audio nativo configurado para leer tu archivo local en la raíz -->
-        <audio id="audio-player" loop>
-            <!-- IMPORTANTE: El nombre debe coincidir EXACTAMENTE con tu archivo de música en GitHub -->
+        <!-- Elemento de audio nativo optimizado para GitHub con recarga forzada -->
+        <audio id="audio-player" preload="auto" loop>
             <source src="musica.mp3" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
@@ -174,8 +180,7 @@
         </div>
 
         <!-- Letra de la canción -->
-        <div class="lyrics-section">
-A little reckless
+        <div class="lyrics-section">A little reckless
 Around the edges
 Call it young, dumb love
 And it's just enough
@@ -239,8 +244,7 @@ We'll make it through, just like we always do
 
 Do-do-do-do-do-do-do (that we do)
 Do-do-do-do-do-do-do (we do)
-Do-do-do-do-do-do-do (just like we always do)
-        </div>
+Do-do-do-do-do-do-do (just like we always do)</div>
 
         <!-- Recuadro de la carta para ARI -->
         <div class="letter-box">
@@ -259,26 +263,17 @@ Do-do-do-do-do-do-do (just like we always do)
 
     </div>
 
-    <!-- Lógica de control para el reproductor interactivo -->
+    <!-- Script de control corregido con forzado de reproducción para servidores web -->
     <script>
         const audio = document.getElementById('audio-player');
         const playPauseBtn = document.getElementById('play-pause-btn');
         const progressBar = document.getElementById('progress-bar');
         const progressContainer = document.getElementById('progress-container');
 
-        // Controlar la reproducción / pausa al hacer clic en el botón
+        // Forzar inicialización limpia del archivo de música en la raíz
+        audio.load();
+
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play().catch(error => {
-                    console.log("La reproducción automática requiere interacción previa del usuario:", error);
-                });
-                playPauseBtn.innerText = '⏸ Pausa';
-            } else {
-                audio.pause();
-                playPauseBtn.innerText = '▶ Play';
-            }
-        });
-
-        // Mover la barra de progreso a medida que avanza la canción
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
+                // Intento de reproducción activa controlado por evento del usuario
+                audio.play().then(() => {

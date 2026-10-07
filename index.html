@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ari</title>
     <style>
-        /* Configuración base y fondo con ruta relativa para GitHub */
+        /* Configuración base y fondo con imagen online */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* IMPORTANTE: El nombre debe coincidir EXACTAMENTE con tu archivo en GitHub */
-            background-image: url('imagen_TzC0YH.png');
+            background-image: url('https://r2.dev');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -37,21 +36,68 @@
             box-sizing: border-box;
         }
 
-        /* Sección del reproductor musical antiguo con ruta relativa */
-        .player-container {
+        /* Nuevo Reproductor de Música Personalizado */
+        .custom-player {
             background: rgba(214, 51, 132, 0.1);
-            padding: 15px;
-            border-radius: 50px;
+            padding: 20px;
+            border-radius: 15px;
             margin-bottom: 35px;
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            width: 85%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        audio {
+        .player-info {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             width: 100%;
+            justify-content: center;
+        }
+
+        .play-btn {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.1s;
+            min-width: 110px;
+        }
+
+        .play-btn:hover {
+            background: #b8266f;
+            transform: scale(1.03);
+        }
+
+        /* Barra de progreso del reproductor */
+        .progress-container {
+            flex-grow: 1;
+            max-width: 60%;
+            background: rgba(0, 0, 0, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: #d63384;
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.1s linear;
         }
 
         /* Sección de la letra de la canción */
@@ -109,13 +155,21 @@
 
     <div class="main-container">
         
-        <!-- Reproductor Antiguo enlazado a tu archivo local en la misma carpeta -->
-        <div class="player-container">
-            <audio controls loop>
-                <!-- IMPORTANTE: El nombre debe coincidir EXACTAMENTE con tu archivo de música en GitHub -->
-                <source src="musica.mp3" type="audio/mpeg">
-                Tu navegador no soporta el elemento de audio.
-            </audio>
+        <!-- Elemento de audio nativo oculto enlazado a la música online -->
+        <audio id="audio-player" loop>
+            <source src="https://r2.dev" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <!-- Reproductor básico e interactivo integrado -->
+        <div class="custom-player">
+            <div class="player-info">🎵 TWICE - I GOT YOU</div>
+            <div class="player-controls">
+                <button class="play-btn" id="play-pause-btn">▶ Play</button>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
         </div>
 
         <!-- Letra de la canción -->
@@ -204,5 +258,27 @@ Do-do-do-do-do-do-do (just like we always do)
 
     </div>
 
-</body>
-</html>
+    <!-- Lógica de control para el reproductor interactivo -->
+    <script>
+        const audio = document.getElementById('audio-player');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+
+        // Controlar la reproducción / pausa al hacer clic en el botón
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    console.log("La reproducción automática requiere interacción previa del usuario:", error);
+                });
+                playPauseBtn.innerText = '⏸ Pausa';
+            } else {
+                audio.pause();
+                playPauseBtn.innerText = '▶ Play';
+            }
+        });
+
+        // Mover la barra de progreso a medida que avanza la canción
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const percentage = (audio.currentTime / audio.duration) * 100;
